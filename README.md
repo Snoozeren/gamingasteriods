@@ -1,2 +1,2 @@
 # gamingasteriods
-[Hej](programmering/gamingasteroids)
+[Hej](Programmering/gamingasteroids)
