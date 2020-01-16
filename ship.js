@@ -24,6 +24,15 @@ function Ship() {
         this.vel.add(force);
     }
 
+    this.hits = function(asteroid) {
+        var d = dist(this.pos.x, this.pos.y, asteroid.pos.x, asteroid.pos.y)
+        if (d < this.r + asteroid.r) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     this.render = function() {
         push();
         translate(this.pos.x, this.pos.y);
@@ -46,6 +55,7 @@ function Ship() {
             this.pos.y = height + this.r;
         }
     }
+ 
 
     this.setRotation = function(a) {
         this.rotation = a;
