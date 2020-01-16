@@ -58,23 +58,13 @@ function keyPressed() {
     if (key == ' ') {
         lasers.push(new Laser(ship.pos, ship.heading));
     }
-     if (keyCode == RIGHT_ARROW) {
+    if (keyCode == RIGHT_ARROW || key == 'd') {
         ship.setRotation(0.1);
     }
-     if (keyCode == LEFT_ARROW) {
+    if (keyCode == LEFT_ARROW || key == 'a') {
         ship.setRotation(-0.1);
     }
-     if (keyCode == UP_ARROW) {
+    if (keyCode == UP_ARROW || key == 'w') {
         ship.boosting(true);
-    }
-     if (key == 'd') {
-        ship.setRotation(0.1);
-    }
-     if (key == 'a') {
-        ship.setRotation(-0.1);
-    } 
-    if (key == 'w') {
-        ship.boosting(true);
-
     }
 }
