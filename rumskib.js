@@ -1,4 +1,4 @@
-var ship;
+dwadvar ship;
 
 function setup() {
     createCanvas(windowWidth, windowHeight);
