@@ -1,5 +1,5 @@
 function Asteroid(pos, r) {
-    if(pos){
+    if (pos) {
         this.pos = pos.copy();
     } else {
         this.pos = createVector(random(width), random(height))
@@ -7,48 +7,48 @@ function Asteroid(pos, r) {
     if (r) {
         this.r = r * 0.5;
     } else {
-        this.r = random (15,50);
+        this.r = random(15, 50);
     }
-    
 
-   this.vel = p5.Vector.random2D();
 
-    this.total = floor(random(5,15));
+    this.vel = p5.Vector.random2D();
+
+    this.total = floor(random(5, 15));
     this.offset = [];
     for (let i = 0; i < this.total; i++) {
-        this.offset[i] = random(-this.r*0.5, this.r*0.5)
+        this.offset[i] = random(-this.r * 0.5, this.r * 0.5)
     }
 
-    this.update = function(){
+    this.update = function () {
         this.pos.add(this.vel);
     }
 
-    this.render = function() {
+    this.render = function () {
         push();
         stroke(255);
         noFill();
         translate(this.pos.x, this.pos.y);
         //ellipse(0,0, this.r*2);
         beginShape();
-        for(let i = 0; i < this.total; i++) {   
+        for (let i = 0; i < this.total; i++) {
             let angle = map(i, 0, this.total, 0, TWO_PI);
             let r = this.r + this.offset[i];
-            let x = r*cos(angle);
-            let y = r*sin(angle);
+            let x = r * cos(angle);
+            let y = r * sin(angle);
             vertex(x, y);
         }
         endShape(CLOSE);
         pop();
     }
 
-    this.breakup = function() {
+    this.breakup = function () {
         let = newA = [];
         newA[0] = new Asteroid(this.pos, this.r);
         newA[1] = new Asteroid(this.pos, this.r);
         return newA;
     }
-     
-    this.edges = function() {
+
+    this.edges = function () {
         if (this.pos.x > width + this.r) {
             this.pos.x = -this.r;
         } else if (this.pos.x < -this.r) {

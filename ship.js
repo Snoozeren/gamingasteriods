@@ -3,14 +3,14 @@ function Ship() {
     this.r = 20;
     this.heading = 0;
     this.rotation = 0;
-    this.vel = createVector(0,0);
+    this.vel = createVector(0, 0);
     this.isBoosting = false;
 
-    this.boosting = function(b) {
+    this.boosting = function (b) {
         this.isBoosting = b;
     }
 
-    this.update = function() {
+    this.update = function () {
         if (this.isBoosting) {
             this.boost();
         }
@@ -18,13 +18,13 @@ function Ship() {
         this.vel.mult(0.99);
     }
 
-    this.boost = function() {
+    this.boost = function () {
         let force = p5.Vector.fromAngle(this.heading);
         force.mult(0.1);
         this.vel.add(force);
     }
 
-    this.hits = function(asteroid) {
+    this.hits = function (asteroid) {
         var d = dist(this.pos.x, this.pos.y, asteroid.pos.x, asteroid.pos.y)
         if (d < this.r + asteroid.r) {
             return true;
@@ -33,17 +33,17 @@ function Ship() {
         }
     }
 
-    this.render = function() {
+    this.render = function () {
         push();
         translate(this.pos.x, this.pos.y);
-        rotate(this.heading + PI/2);
+        rotate(this.heading + PI / 2);
         fill(0);
         stroke(255);
         triangle(-this.r, this.r, this.r, this.r, 0, -this.r);
         pop();
     }
 
-    this.edges = function() {
+    this.edges = function () {
         if (this.pos.x > width + this.r) {
             this.pos.x = -this.r;
         } else if (this.pos.x < -this.r) {
@@ -55,9 +55,9 @@ function Ship() {
             this.pos.y = height + this.r;
         }
     }
- 
 
-    this.setRotation = function(a) {
+
+    this.setRotation = function (a) {
         this.rotation = a;
     }
 
