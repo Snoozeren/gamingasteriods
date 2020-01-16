@@ -63,12 +63,5 @@ function keyPressed() {
         ship.setRotation(-0.1);
     } else if (keyCode == UP_ARROW) {
         ship.boosting(true);
-    } else if (key == 'd') {
-        ship.setRotation(0.1);
-    } else if (key == 'a') {
-        ship.setRotation(-0.1);
-    } else if (key == 'w') {
-        ship.boosting(true);
-
     }
 }
