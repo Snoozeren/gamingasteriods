@@ -1,6 +1,13 @@
 let ship;
 let asteroids = [];
 let lasers = [];
+let sounde;
+let song;
+
+function preload() {
+    sounde = loadSound("lazylyd2.mp3");
+    song = loadSound("starwars.mp3", playmusic);
+}
 
 function setup() {
     createCanvas(windowWidth, windowHeight);
@@ -8,7 +15,14 @@ function setup() {
     for (let i = 0; i < 5; i++) {
         asteroids.push(new Asteroid());
     }
+
 }
+
+function playmusic() {
+    song.play();
+    song.setVolume(0.1)
+}
+
 
 function draw() {
     background(0);
@@ -49,6 +63,7 @@ function draw() {
 
 
 }
+
 function keyReleased() {
     ship.setRotation(0);
     ship.boosting(false);
@@ -57,6 +72,8 @@ function keyReleased() {
 function keyPressed() {
     if (key == ' ') {
         lasers.push(new Laser(ship.pos, ship.heading));
+        sounde.play();
+        sounde.setVolume(1.5);
     }
     if (keyCode == RIGHT_ARROW || key == 'd') {
         ship.setRotation(0.1);
